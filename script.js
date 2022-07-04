@@ -75,11 +75,11 @@ function calcularMonto(sueldoBruto){
 }
 
 function insertarElementos(salarioNeto) {
-    document.getElementById("montoBruto").innerHTML= sueldoBruto.value;
-    document.getElementById("montoJubilacion").innerHTML= jubilacion;
-    document.getElementById("montoLey").innerHTML= ley;
-    document.getElementById("montoObraSocial").innerHTML= obraSocial;
-    document.getElementById("montoSindicato").innerHTML= afiliado;
-    document.getElementById("montoImpGanancias").innerHTML= ganancias;
-    document.getElementById("montoSueldoNeto").innerHTML= salarioNeto;
+    document.getElementById("montoBruto").innerHTML="$ " + sueldoBruto.value;
+    document.getElementById("montoJubilacion").innerHTML="$ " + jubilacion;
+    document.getElementById("montoLey").innerHTML="$ " + ley;
+    document.getElementById("montoObraSocial").innerHTML="$ " + obraSocial;
+    document.getElementById("montoSindicato").innerHTML="$ " + afiliado;
+    document.getElementById("montoImpGanancias").innerHTML="$ " + ganancias;
+    document.getElementById("montoSueldoNeto").innerHTML="$ " + salarioNeto;
 }
