@@ -3,6 +3,13 @@ const sueldoBruto = document.getElementById('sueldoBruto');
 const sindicato = document.getElementById('afiliado?')
 const btnCalcular = document.getElementById('btnCalcular');
 
+let salarioNeto = 0;
+let jubilacion = 0;
+let ley = 0;
+let obraSocial = 0;
+let afiliado = 0;
+let ganancias = 0;
+
 btnCalcular.addEventListener('click', () =>{
 
     if (empleado.value.trim() == "") {
@@ -26,17 +33,18 @@ btnCalcular.addEventListener('click', () =>{
       }
 })
 
-let salarioNeto = 0;
-let jubilacion = sueldoBruto.value * 0.11;
-let ley = sueldoBruto.value * 0.03;
-let obraSocial = sueldoBruto.value * 0.03;
-let afiliado = sueldoBruto.value * 0.015;
-let ganancias = (sueldoBruto.value - 200000) * 0.35;
-
 function calcularMonto(sueldoBruto){
 
+    jubilacion = Number(sueldoBruto) * 0.11;
+    ley = Number(sueldoBruto) * 0.03;
+    obraSocial = Number(sueldoBruto) * 0.03;
+
     if(sindicato.checked == true) {
+        afiliado = Number(sueldoBruto) * 0.015;
+
         if(sueldoBruto > 200000) {
+            ganancias = (Number(sueldoBruto) - 200000) * 0.35;
+
             salarioNeto = sueldoBruto - jubilacion - ley - obraSocial - afiliado - ganancias;
 
             insertarElementos(salarioNeto)
@@ -51,6 +59,7 @@ function calcularMonto(sueldoBruto){
     else if(sindicato.checked == false) {
         afiliado = 0;
         if(sueldoBruto > 200000) {
+            ganancias = (Number(sueldoBruto) - 200000) * 0.35;
 
             salarioNeto = sueldoBruto - jubilacion - ley - obraSocial - ganancias
 
