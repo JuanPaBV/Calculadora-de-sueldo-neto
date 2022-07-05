@@ -4,28 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de sueldo neto</title>
+    <title>Recuperatorio Bosio</title>
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+	<meta content="utf-8" http-equiv="encoding"> 
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="main.js" defer></script>
 </head>
 <body>
     <form id="app">
-        <h1 class="titulo">CALCULADORA DE SUELDO NETO</h1>
+        <h1 class="titulo">Calculadora Salario Neto</h1>
         <div class="contenedor">
-            <label for="nombre">Nombre y Apellido: </label>
-            <input type="text" name="nombreApellido" id="nombreApellido" placeholder="Ingrese su nombre y apellido"/>
-            <div id="error1"></div>
+            <label>Nombre y Apellido: </label>
+            <input type="text" v-model="empleado" id="nombreApellido" placeholder="Ingrese su nombre y apellido">
+            <div id="error1">
+                <p v-if="empleado === ''">Nombre y/o apellido incorrecto, porfavor vuelva a intentarlo</p>
+            </div>
         </div>
         <div class="contenedor">
-            <label for="inversion">Sueldo Bruto: </label>
-            <input type="number" name="sueldoBruto" id="sueldoBruto" placeholder= 0 />
-            <div id="error2"></div>
+            <label>Salario: </label>
+            <input type="number" v-model="sueldoBruto" id="sueldoBruto" placeholder= 0>
+            <div id="error2">
+                <p v-if="sueldoBruto < 1">Debe ingresar un valor mayor a $ 0</p>
+            </div>
         </div>
         <div class="contenedor">
-            <label for="dias">¿Se encuentra afiliado al sindicato?</label>
-            <input type="checkbox" name="afiliado?" id="afiliado?">
+            <label>Se encuentra afiliado: </label>
+            <input type="checkbox" v-model="sindicato" id="sindicato">
         </div>
-        <button type="button" id="btnCalcular">CALCULAR</button>
+        <button type="button" id="btnCalcular" @click="Calcular">CALCULAR</button>
     </form>
     <section id="data" class="clear"> 
         <div class="container">
@@ -67,6 +74,6 @@
             </tr>
           </tbody>
       </table>
-      </section>
+    </section>
 </body>
 </html>
